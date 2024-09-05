@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: `https://easyapibackend-elwu.onrender.com/api/`,
+  baseURL: `http://localhost:5500/api`,
   withCredentials: true,
   headers: {
     "Access-Control-Allow-Origin": "*",
