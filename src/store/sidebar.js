@@ -2,7 +2,7 @@
 import { TOGGLE_SIDEBAR } from "../action/sidebarAction";
 
 const initialState = {
-  collapsed: false,
+  collapsed: true,
 };
 
 const sidebar = (state = initialState, action) => {
