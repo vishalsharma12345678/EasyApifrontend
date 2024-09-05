@@ -2305,7 +2305,7 @@ h6 .badge {
 /* 3.18 Navbar */
 .navbar {
   height: 70px;
-  left: 250px;
+  left: 5px;
   right: 5px;
   position: absolute;
   z-index: 890;
@@ -3628,7 +3628,12 @@ pre {
   transition: all .5s;
 }
 
-body.sidebar-gone .main-sidebar {
+
+/* .main-sidebar {
+  left: -250px;
+} */
+
+body {
   left: -250px;
 }
 
@@ -4175,7 +4180,7 @@ body.layout-3 .main-footer {
 }
 
 .main-content {
-  padding-left: 280px;
+  padding-left: 30px;
   padding-right: 30px;
   padding-top: 80px;
   width: 100%;

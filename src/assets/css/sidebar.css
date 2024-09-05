@@ -1,0 +1,19 @@
+.main-sidebar {
+    transition: width 0.3s;
+}
+
+.main-sidebar.collapsed {
+    width: 0px;
+    /* Adjust as needed */
+}
+
+.main-sidebar .sidebar-brand,
+.main-sidebar .sidebar-menu {
+    transition: opacity 0.3s;
+}
+
+.main-sidebar.collapsed .sidebar-brand,
+.main-sidebar.collapsed .sidebar-menu {
+    opacity: 0;
+    /* Hide elements in the collapsed state */
+}
