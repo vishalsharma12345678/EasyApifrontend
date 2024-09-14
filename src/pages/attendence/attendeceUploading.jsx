@@ -112,7 +112,7 @@ const AttendenceUpload = () => {
                 </tr>
               </thead>
               <tbody>
-                {EmployeeAttendence.map((row, index) => (
+                {EmployeeAttendence?.map((row, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td style={{ display: "none" }}>

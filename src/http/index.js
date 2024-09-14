@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 // 'http://localhost:5500/api'
-
+// https://easyapibackend-elwu.onrender.com/api
 //Auth
 export const doLogin = (data) => api.post("/auth/login", data);
 export const forgotPassword = (data) => api.post("/auth/forgot", data);
@@ -42,6 +42,17 @@ export const findTeamReport = async (data) => {
   const l = api.post("/leader/team/findReport", data);
   return l;
 };
+export const customerRequest = async () => {
+  const l = api.get("/common/customer/record");
+  return l;
+};
+export const allcustomerAssiged = () => api.get("/admin/allcustomerAssiged");
+
+export const customerupdate = async (data) => {
+  console.log(data);
+  const l = api.post("/common/customer/record/update", data);
+  return l;
+};
 export const adminfindTeamReport = async (data) => {
   console.log(data);
   const l = api.post("/admin/team/findReport", data);
@@ -51,6 +62,14 @@ export const updateTeamReport = async (data) => {
   const l = api.post("/leader/team/updateReport", data);
   return l;
 };
+export const AllUsersdata = async () => {
+  const data = api.get("/admin/alluserdata");
+  return data;
+};
+//
+export const leaderteamCustomer = () =>
+  api.get("/leader/team/members/customer");
+export const EmployeeCustomer = () => api.get("/employee/getownCustomer");
 export const getCounts = () => api.get("/admin/counts");
 export const getEmployees = () => api.get("/admin/employees");
 export const getLeaders = () => api.get("/admin/leaders");

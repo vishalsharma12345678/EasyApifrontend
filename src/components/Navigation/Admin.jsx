@@ -35,6 +35,16 @@ const Admin = () => {
         </NavLink>
       </li>
       <li onClick={handleToggle}>
+        <NavLink className="nav-link" to="/adminshowCustomer">
+          <i className="fas fa-fire"></i> <span>Show customer</span>
+        </NavLink>
+      </li>
+      <li onClick={handleToggle}>
+        <NavLink className="nav-link" to="/MyAccountCustomer">
+          <i className="fas fa-user"></i> <span>My Account Cus</span>
+        </NavLink>
+      </li>
+      <li onClick={handleToggle}>
         <NavLink className="nav-link" to="/attendance">
           <i className="fas fa-user"></i> <span>Attendance</span>
         </NavLink>

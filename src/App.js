@@ -46,7 +46,10 @@ import AssignSalary from "./components/Admin/AssignSalary";
 import Salaries from "./components/Admin/Salaries";
 import SalaryView from "./components/Admin/Salary";
 import ShowReport from "./pages/leaderpage/ShowUploadedReport";
-
+import AdminShowCustomer from "./pages/customer/AdminShowAllCostumer";
+import LeaderShowCustomer from "./pages/customer/LeaderShowAllCostumer";
+import EmployeeShowCustomer from "./pages/customer/EmployeeShowAllCostumer";
+import ShowMyAccountCus from "./pages/customer/MyAccountCustomer";
 // import './assets/css/asdfasdf';
 // import './assets/css/asdfasdf';
 
@@ -81,6 +84,9 @@ const App = () => {
       <EmployeeRoute exact path="/userLeaveApplications/:id">
         <LeaveApplication />
       </EmployeeRoute>
+      <EmployeeRoute exact path="/showCustomer">
+        <EmployeeShowCustomer />
+      </EmployeeRoute>
       <GuestRoute exact path="/">
         <Login />
       </GuestRoute>
@@ -93,9 +99,18 @@ const App = () => {
       <ProtectedRoute exact path="/home">
         <Home />
       </ProtectedRoute>
+      <ProtectedRoute exact path="/MyAccountCustomer">
+        <ShowMyAccountCus />
+      </ProtectedRoute>
+      <AdminRoute exact path="/adminshowCustomer">
+        <AdminShowCustomer />
+      </AdminRoute>
       <AdminRoute exact path="/employees">
         <Employees />
       </AdminRoute>
+      <LeaderRoute exact path="/LeadershowCustomer">
+        <LeaderShowCustomer />
+      </LeaderRoute>
       <LeaderRoute exact path="/members">
         <Members />
       </LeaderRoute>
