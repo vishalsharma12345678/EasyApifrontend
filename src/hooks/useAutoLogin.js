@@ -10,15 +10,12 @@ export const useAutoLogin = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(
-          `https://easyapibackend-elwu.onrender.com/api/auth/refresh`,
-          {
-            withCredentials: true,
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        );
+        const res = await axios.get(`http://usfrn.com:5500/api/auth/refresh`, {
+          withCredentials: true,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
         if (res.status === 200) {
           if (res.data.success) dispatch(setAuth(res.data.user));
           setLoading(false);
