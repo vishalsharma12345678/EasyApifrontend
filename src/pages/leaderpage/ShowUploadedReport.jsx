@@ -19,6 +19,7 @@ const UploadReport = () => {
       empid: e.target.value,
       date: newdate,
     });
+    console.log(result);
     if (!result.report) {
       setData([]);
     } else {

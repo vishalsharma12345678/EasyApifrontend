@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: `http://usfrn.com:5500/api`,
+  baseURL: `http://localhost:5500/api`,
   withCredentials: true,
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -46,11 +46,23 @@ export const customerRequest = async () => {
   const l = api.get("/common/customer/record");
   return l;
 };
+export const instrestedcustomer = async (data) => {
+  console.log(data);
+  const l = api.post("/common/customer/record/interstedemplyee", data);
+  return l;
+};
 export const allcustomerAssiged = () => api.get("/admin/allcustomerAssiged");
 
 export const customerupdate = async (data) => {
   console.log(data);
   const l = api.post("/common/customer/record/update", data);
+  return l;
+};
+export const deletecustomer = (data) =>
+  api.get(`/common/customer/record/deletecustomer/${data}`);
+export const messageupdate = async (data) => {
+  console.log(data);
+  const l = api.post("/common/customer/record/updatemessage", data);
   return l;
 };
 export const adminfindTeamReport = async (data) => {

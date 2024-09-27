@@ -10,7 +10,7 @@ export const useAutoLogin = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(`http://usfrn.com:5500/api/auth/refresh`, {
+        const res = await axios.get(`http://localhost:5500/api/auth/refresh`, {
           withCredentials: true,
           headers: {
             "Access-Control-Allow-Origin": "*",

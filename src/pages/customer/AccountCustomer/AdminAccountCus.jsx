@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Loading from "../../../components/Loading";
+
 import {
-  customerRequest,
+  messageupdate,
+  deletecustomer,
   customerupdate,
   AllUsersdata,
   allcustomerAssiged,
@@ -10,6 +13,8 @@ const AdminShowCustomer = () => {
   const { user } = useSelector((state) => state.authSlice);
   const [customers, setcustomers] = useState([]);
   const [TeamMemeber, setTeamMemeber] = useState([]);
+  const [lodingstate, setLodingstate] = useState(false);
+  const [message, setmessage] = useState("");
   async function fetchCustomerdata() {
     const customersdata = await allcustomerAssiged();
     console.log(customersdata);
@@ -31,9 +36,31 @@ const AdminShowCustomer = () => {
     if (updatedata.success) {
       fetchCustomerdata();
       leaderteam();
+      setLodingstate(false);
     }
   }
-  return (
+  async function handledelete(id) {
+    const result = await deletecustomer(id);
+    console.log(result);
+    if (result.success) {
+      fetchCustomerdata();
+      leaderteam();
+      setLodingstate(false);
+    } else {
+      setLodingstate(false);
+    }
+  }
+  async function handleupdate(id) {
+    // setLodingstate(true);
+    const data = { cusid: id, message: message };
+    const result = await messageupdate(data);
+    if (result.success) {
+      window.location.reload();
+    }
+  }
+  return lodingstate ? (
+    <Loading />
+  ) : (
     <>
       <div className="table-responsive">
         <table className="table table-striped table-md center-text">
@@ -43,8 +70,10 @@ const AdminShowCustomer = () => {
               <th>Name</th>
               <th>Applied Date</th>
               <th>Email</th>
-              <th>M Number</th>
+              <th>MC Number</th>
+              <th>Mobile Number</th>
               <th>Address</th>
+              <th>Take over BY</th>
               <th>Message</th>
               <th>Action</th>
             </tr>
@@ -56,9 +85,19 @@ const AdminShowCustomer = () => {
                 <td>{customer.name}</td>
                 <td>{customer.date}</td>
                 <td>{customer.email}</td>
+                <td>{customer.mcnumbers}</td>
                 <td>{customer.phoneNumber}</td>
                 <td>{customer.address}</td>
-                <td>{customer.message}</td>
+                <td>{customer.takeOverby.name}</td>
+                <td>
+                  <textarea
+                    rows={5}
+                    cols={25}
+                    onChange={(e) => setmessage(e.target.value)}
+                  >
+                    {customer.message}
+                  </textarea>
+                </td>
                 <td>
                   <select onChange={(e) => handletakeOver(e, customer._id)}>
                     <option selected={true} disabled value="">
@@ -70,6 +109,12 @@ const AdminShowCustomer = () => {
                       </option>
                     ))}
                   </select>
+                  <button onClick={() => handledelete(customer._id)}>
+                    delete
+                  </button>
+                  <button onClick={() => handleupdate(customer._id)}>
+                    update
+                  </button>
                 </td>
               </tr>
             ))}
